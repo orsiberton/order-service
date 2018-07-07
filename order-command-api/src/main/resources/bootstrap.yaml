@@ -11,7 +11,7 @@ eureka:
     hostname: localhost
     port: 8761
   client:
-    enabled: false
+    enabled: true
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
 
