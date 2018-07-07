@@ -1,0 +1,19 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: order-command-api
+
+eureka:
+  environment: local
+  instance:
+    hostname: localhost
+    port: 8761
+  client:
+    enabled: true
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
+
+management.endpoints.web.base-path: /
+management.endpoint.health.show-details: always

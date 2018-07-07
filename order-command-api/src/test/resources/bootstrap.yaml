@@ -1,0 +1,8 @@
+spring:
+  profiles: test
+  application:
+    name: order-command-api
+
+eureka:
+  client:
+    enabled: false
