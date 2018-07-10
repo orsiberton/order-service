@@ -11,9 +11,10 @@ eureka:
     hostname: localhost
     port: 8761
   client:
-    enabled: true
+    enabled: false
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
 
 management.endpoints.web.base-path: /
 management.endpoint.health.show-details: always
+management.endpoints.web.exposure.include: '*'

@@ -1,12 +1,15 @@
 package com.ordercommand.ordercommandapi.controller;
 
 import com.ordercommand.ordercommandapi.controller.dto.OrderDto;
+import com.ordercommand.ordercommandapi.mapper.OrderDtoToOrderMapper;
+import com.ordercommand.ordercommandapi.service.OrderService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +28,13 @@ import java.util.UUID;
 @RequestMapping(value = "/order", produces = MediaType.APPLICATION_JSON_VALUE)
 public class OrderController {
 
+    private OrderService orderService;
+
+    @Autowired
+    public OrderController(OrderService orderService) {
+        this.orderService = orderService;
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ApiOperation(value = "Create an Order")
@@ -33,6 +43,7 @@ public class OrderController {
             @ApiResponse(code = 500, message = "Something went wrong!") }
     )
     public void createOrder(@RequestBody OrderDto orderDto) {
+        orderService.createOrder(OrderDtoToOrderMapper.map(orderDto));
         log.info("Order {} will be created!", orderDto.getDescription());
     }
 

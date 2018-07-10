@@ -2,6 +2,7 @@ buildscript {
     ext {
         springBootVersion = '2.0.3.RELEASE'
         swaggerVersion = '2.9.2'
+        logstashVersion = '5.1'
     }
     repositories {
         mavenCentral()
@@ -44,6 +45,7 @@ dependencies {
 
     compile("io.springfox:springfox-swagger2:${swaggerVersion}")
     compile("io.springfox:springfox-swagger-ui:${swaggerVersion}")
+    compile("net.logstash.logback:logstash-logback-encoder:${logstashVersion}")
 
     compileOnly('org.projectlombok:lombok')
     testCompile('org.springframework.boot:spring-boot-starter-test')
